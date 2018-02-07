@@ -10,7 +10,7 @@ class ClientServiceSpec extends Specification {
 
     RestTemplate restTemplate = Mock(RestTemplate)
     ClientService clientService = new ClientServiceImpl(
-            restTemplate: restTemplate
+            restTemplate
     )
 
     def "Test process"() {

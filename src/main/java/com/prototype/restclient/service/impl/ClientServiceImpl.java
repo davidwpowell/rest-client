@@ -10,8 +10,12 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class ClientServiceImpl implements ClientService {
 
+    private final RestTemplate restTemplate;
+
     @Autowired
-    private RestTemplate restTemplate;
+    public ClientServiceImpl(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     @Override
     public Response process(final Request request) {

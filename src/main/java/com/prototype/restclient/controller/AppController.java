@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class AppController {
 
+    private final ClientService clientService;
+
     @Autowired
-    private ClientService clientService;
+    public AppController(ClientService clientService) {
+        this.clientService = clientService;
+    }
 
     @GetMapping("/")
     public String formDisplay(Model model) {

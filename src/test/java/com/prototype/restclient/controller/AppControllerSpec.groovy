@@ -11,7 +11,7 @@ class AppControllerSpec extends Specification {
 
     ClientService clientService = Mock(ClientService)
     AppController appController = new AppController(
-            clientService: clientService
+            clientService
     )
 
     def "Test formDisplay"() {
