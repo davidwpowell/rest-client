@@ -1,5 +1,6 @@
 package com.prototype.restclient.controller;
 
+import com.prototype.restclient.constants.AppConstants;
 import com.prototype.restclient.model.Request;
 import com.prototype.restclient.model.Response;
 import com.prototype.restclient.service.ClientService;
@@ -18,6 +19,7 @@ public class AppController {
 
     @GetMapping("/")
     public String formDisplay(Model model) {
+        model.addAttribute("restMethods", AppConstants.httpMethodMap());
         model.addAttribute("request", new Request());
         return "input";
     }
