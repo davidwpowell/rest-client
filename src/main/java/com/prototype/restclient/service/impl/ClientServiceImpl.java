@@ -30,6 +30,10 @@ public class ClientServiceImpl implements ClientService {
         ResponseEntity<String> responseEntity = restTemplate.exchange(url, httpMethod, entity, String.class);
         String responseBody = responseEntity.getBody();
         Response response = new Response();
+        HttpHeaders httpHeaders = responseEntity.getHeaders();
+        if (httpHeaders != null) {
+            response.setResponseHeader(httpHeaders.toString());
+        }
         response.setResponseBody(responseBody);
         return response;
     }

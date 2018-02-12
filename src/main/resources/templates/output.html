@@ -6,6 +6,9 @@
 </head>
 <body>
 <h1>Response</h1>
+<h3>Headers</h3>
+<p th:text="${response.responseHeader}"></p>
+<h3>Body</h3>
 <p th:text="${response.responseBody}"></p>
 <a href="/">Make another REST call</a>
 </body>
