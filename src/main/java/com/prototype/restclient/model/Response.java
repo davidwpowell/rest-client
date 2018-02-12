@@ -2,13 +2,13 @@ package com.prototype.restclient.model;
 
 public class Response {
 
-    private String body;
+    private String responseBody;
 
-    public String getBody() {
-        return body;
+    public String getResponseBody() {
+        return responseBody;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setResponseBody(String responseBody) {
+        this.responseBody = responseBody;
     }
 }
