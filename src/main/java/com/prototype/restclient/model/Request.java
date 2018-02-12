@@ -6,6 +6,7 @@ public class Request {
 
     private String url;
     private HttpMethod httpMethod;
+    private String requestBody;
 
     public String getUrl() {
         return url;
@@ -23,4 +24,11 @@ public class Request {
         this.httpMethod = httpMethod;
     }
 
+    public String getRequestBody() {
+        return requestBody;
+    }
+
+    public void setRequestBody(String requestBody) {
+        this.requestBody = requestBody;
+    }
 }

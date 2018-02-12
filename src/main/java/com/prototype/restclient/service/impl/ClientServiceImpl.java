@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -27,19 +28,21 @@ public class ClientServiceImpl implements ClientService {
         HttpMethod httpMethod = request.getHttpMethod();
         HttpEntity<String> entity = initEntity(request);
         ResponseEntity<String> responseEntity = restTemplate.exchange(url, httpMethod, entity, String.class);
-        String body = responseEntity.getBody();
+        String responseBody = responseEntity.getBody();
         Response response = new Response();
-        response.setBody(body);
+        response.setBody(responseBody);
         return response;
     }
 
-    private HttpEntity<String> initEntity(Request request){
-        String body = "";
-        HttpHeaders httpHeaders = initHeaders(request);
+    private HttpEntity<String> initEntity(final Request request) {
+        String body = request.getRequestBody();
+        HttpHeaders httpHeaders = initHeaders();
         return new HttpEntity<>(body, httpHeaders);
     }
 
-    private HttpHeaders initHeaders(Request request) {
-        return new HttpHeaders();
+    private HttpHeaders initHeaders() {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        return httpHeaders;
     }
 }
