@@ -7,7 +7,7 @@ import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
-import org.springframework.http.RequestEntity
+import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.client.RestTemplate
 import spock.lang.Specification
@@ -26,8 +26,8 @@ class ClientServiceSpec extends Specification {
                 url: "test_url",
                 httpMethod: HttpMethod.GET
         )
-        String body = "test_body"
-        ResponseEntity<String> responseEntity = new ResponseEntity(body, HttpStatus.OK);
+        String responseBody = "test_responseBody"
+        ResponseEntity<String> responseEntity = new ResponseEntity(responseBody, HttpStatus.OK)
 
         when:
         Response response = clientService.process(request)
@@ -37,6 +37,34 @@ class ClientServiceSpec extends Specification {
         0 * _
 
         and:
-        response.body == body
+        response.responseBody == responseBody
+    }
+
+    def "Test initEntity"() {
+        given:
+        String requestBody = "test_requestBody"
+        Request request = new Request(
+                requestBody: requestBody
+        )
+
+        when:
+        HttpEntity<String> httpEntity = clientService.initEntity(request)
+
+        then:
+        0 * _
+
+        and:
+        httpEntity.body == requestBody
+    }
+
+    def "Test initHeaders"() {
+        when:
+        HttpHeaders httpHeaders = clientService.initHeaders()
+
+        then:
+        0 * _
+
+        and:
+        httpHeaders.getContentType() == MediaType.APPLICATION_JSON
     }
 }
