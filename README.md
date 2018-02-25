@@ -1,6 +1,3 @@
-# rest-client
-Spring Boot REST Client Prototype
-
-
-#Travis CI Build Passing Badge
+# Spring Boot REST Client Prototype
 [![Build Status](https://travis-ci.org/davidwpowell/rest-client.svg?branch=master)](https://travis-ci.org/davidwpowell/rest-client)
+[REST Client App](https://shielded-river-77060.herokuapp.com/ "REST Client")
