@@ -8,7 +8,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class AppConstants {
+public final class AppConstants {
+
+    private AppConstants() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static Map<String, HttpMethod> httpMethodMap() {
         return Collections.unmodifiableMap(Stream.of(
