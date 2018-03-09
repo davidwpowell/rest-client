@@ -17,8 +17,7 @@ cache:
     - '$HOME/.sonar/cache'
 deploy:
   provider: heroku
-  api_key:
-    secure: wB85H4NVQiTMa4bPsN7TLHLBRapCoGmJJ+1kZJO2UG/lTjT7AqzP1p4rEXlPeNgSVeJuJ8AS2vvKr7Hnv2cZAFHILAHOte1vYPVEGMa4xkOFanatv4KpHODWxsfway+IenWQDH/OnNaqMvTsYu0PTJpHec9YQzR3MaT0o494z/BWMQrTQRloKu6jwI25xB19AzL2pEQWGQWXpHMNfPBowNKAT6r5sexgSreMd0HEkZGLYNvFh6trng1UJVAfXuugcmPVynCaLH8SVS8GeN/e081JA57tAl6kXnQOisoHmeVYGEzm1vMWHljjn/sXo/MiixyQET9zit0sbClG7X9p7hA+uaF3UXqslSBT72Gw4qNZK5ByLYAx4rB4fBf56JYNYhtkgqDC/FIokhMDMd93v1Nh7ZyqbwDYNdxTwSpV461idsfAeeShG3uqME0u/klIiaPd17hRjW1HpmhMSjnrX0zgRelNIhUstm3gkhWK+2CUOGBtCm0OeF6b3fFO2wb4OOnaY943CQ/2olDxUZuOd+BBrx2EmtudZqsOhmyh3Itpkgs2n4H4uXPW4vvNPLKM7Rxpd0UYnU/qfxWleXzFqLv0bbtYlUjff/h5TO1v7lRngMw4mkCxnuU/a8MPQiBaVW8OnvYpF48UykqNYMmtp7Nx0W2vIk0TPbZnudrisAA=
+  api_key: $HEROKU_TOKEN
   app: shielded-river-77060
   on:
     repo: davidwpowell/rest-client
