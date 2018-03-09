@@ -1,4 +1,5 @@
 language: java
+sudo: false
 notifications:
   slack:
     secure: ArWucVG3wQs7+zyrrbJjksjfxIZ4/C5xCpVg9CCTjy2CVg1ZxPfFm1RAutpvnMfhynguV4qojtfzXgNKdJTYeuLHmm69YWouSIzS3nBmec1ycc8CqbG7GwTvuwddyu839x0NFVccxmjUVZCdNw3V7ErroEpzExGg6EETtGl4stDRx1wyPkLJ8akx6ohhomIOraXrCDzXtcfCf2DKGIPfZqjQInBayJpvPLZKnJc7LEUYiSP5gExrqjKTEDjqCvllLb9mr3oBpHpdq6kVK/Rs4IXhI2m/ZPZXC02CjDN8qOywh8M58IuVoASexrGhswtOGhVYfTogJtXT4aOqYSRtycLzZIkC09C1WMZ2a3sWRk8ZYjUZJPTyfFLE49Z9qKOdjL7Di9PfUnu72XyL4FQf/SK9D/KZlkI7k8h9OJR/IYjFBfeMAHXKi0wu1HvxYVamWzLlRcE9xh2NSUFBGC8XpfVnLKMnmA2KRZfzNgkqSfqU9YvIQ6y8vOo6guq1bP9qCNqWx/2Lq5p4qNzggI3syMkoDkpjkOz0+E0t9CI4Y98RsTEWwJvnNCu4sa883JXeESuJKaSEOnyRxGYCTVVjT55UWmuW79Z5aXmv3udLm8JqHkjOVvlgP7scWORe2h/N2/ArWH9Jr+nZP0V2feZ5R9w1CICW76SMpz3Q+KVDMBA=
@@ -6,8 +7,14 @@ addons:
   sonarcloud:
     organization: davidwpowell-github
     token: $SONAR_TOKEN
+jdk:
+  - oraclejdk8
 script:
-- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
 deploy:
   provider: heroku
   api_key:
